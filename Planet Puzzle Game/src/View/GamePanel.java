@@ -96,6 +96,23 @@ public class GamePanel extends javax.swing.JPanel {
         }
         return false;
     }
+    
+    public boolean toShip(Thing name){ 
+        if(onEarth){
+            for (int i = 0; i < mars.size(); i++){
+                if (mars.get(i) == name)
+                    return false;
+            }
+        }
+        
+        else {
+            for (int i = 0; i < earth.size(); i++){
+                if (earth.get(i) == name)
+                    return false;
+            }
+        }
+        return true;
+    }
     /*
     SCIENTIST EARTH BOUNDS: scientistPng.setBounds(30, 260, 75, 120);
     GRAIN EARTH BOUNDS: grainPng.setBounds(140, 290, 70, 80);
@@ -326,198 +343,190 @@ public class GamePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void scientistPngMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scientistPngMouseClicked
-        if (onShip(scientist)) {
-            if (onEarth) {
-                earth.add(scientist);
-                spaceship.remove(scientist);
-                scientistPng.setBounds(30, 260, 75, 120);
-            } 
-            else {
-                mars.add(scientist);
-                spaceship.remove(scientist);
-                scientistPng.setBounds(630, 230, 75, 120);
-            }
-
-        } 
-        else {
-            if (spaceship.size() <= 2) {
+        if (toShip(scientist)) {
+            if (onShip(scientist)) {
                 if (onEarth) {
-                    earth.remove(scientist);
-                    spaceship.add(scientist);
+                    earth.add(scientist);
+                    spaceship.remove(scientist);
+                    scientistPng.setBounds(30, 260, 75, 120);
                 } else {
-                    mars.remove(scientist);
-                    spaceship.add(scientist);
+                    mars.add(scientist);
+                    spaceship.remove(scientist);
+                    scientistPng.setBounds(630, 230, 75, 120);
                 }
-                scientistPng.setBounds(440, 150, 75, 120);
+
             } else {
-                JOptionPane.showMessageDialog(null, "The Rocketship can only contain upto the SCIENTIST and 2 other ITEMS");
+                if (spaceship.size() <= 2) {
+                    if (onEarth) {
+                        earth.remove(scientist);
+                        spaceship.add(scientist);
+                    } else {
+                        mars.remove(scientist);
+                        spaceship.add(scientist);
+                    }
+                    scientistPng.setBounds(440, 150, 75, 120);
+                } else {
+                    JOptionPane.showMessageDialog(null, "The Rocketship can only contain upto the SCIENTIST and 2 other ITEMS");
+                }
             }
         }
     }//GEN-LAST:event_scientistPngMouseClicked
 
     private void grainPngMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_grainPngMouseClicked
-//        // TODO add your handling code here:
-        if (onShip(grain)) {
-            if (onEarth) {
-                earth.add(grain);
-                spaceship.remove(grain);
-                grainPng.setBounds(140, 290, 70, 80);
-            } 
-            else {
-                mars.add(grain);
-                spaceship.remove(grain);
-                grainPng.setBounds(140, 290, 70, 80);
-            }
-
-        } 
-        else {
-            if (spaceship.size() <= 2) {
+        if (toShip(grain)) {
+            if (onShip(grain)) {
                 if (onEarth) {
-                    earth.remove(grain);
-                    spaceship.add(grain);
+                    earth.add(grain);
+                    spaceship.remove(grain);
+                    grainPng.setBounds(140, 290, 70, 80);
                 } else {
-                    mars.remove(grain);
-                    spaceship.add(grain);
+                    mars.add(grain);
+                    spaceship.remove(grain);
+                    grainPng.setBounds(140, 290, 70, 80);
                 }
-                grainPng.setBounds(390, 250, 70, 80);
+
             } else {
-                JOptionPane.showMessageDialog(null, "The Rocketship can only contain upto the SCIENTIST and 2 other ITEMS");
+                if (spaceship.size() <= 2) {
+                    if (onEarth) {
+                        earth.remove(grain);
+                        spaceship.add(grain);
+                    } else {
+                        mars.remove(grain);
+                        spaceship.add(grain);
+                    }
+                    grainPng.setBounds(390, 250, 70, 80);
+                } else {
+                    JOptionPane.showMessageDialog(null, "The Rocketship can only contain upto the SCIENTIST and 2 other ITEMS");
+                }
             }
         }
     }//GEN-LAST:event_grainPngMouseClicked
 
     private void cowPngMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cowPngMouseClicked
-        // TODO add your handling code here:
-        if (onShip(cow)) {
-            if (onEarth) {
-                earth.add(cow);
-                spaceship.remove(cow);
-                cowPng.setBounds(120, 180, 120, 91);
-            } 
-            else {
-                mars.add(cow);
-                spaceship.remove(cow);
-                cowPng.setBounds(520, 170, 120, 91);
-            }
-
-        } 
-        else {
-            if (spaceship.size() <= 2) {
+        if (toShip(cow)) {
+            if (onShip(cow)) {
                 if (onEarth) {
-                    earth.remove(cow);
-                    spaceship.add(cow);
+                    earth.add(cow);
+                    spaceship.remove(cow);
+                    cowPng.setBounds(120, 180, 120, 91);
                 } else {
-                    mars.remove(cow);
-                    spaceship.add(cow);
+                    mars.add(cow);
+                    spaceship.remove(cow);
+                    cowPng.setBounds(520, 170, 120, 91);
                 }
-                cowPng.setBounds(290, 230, 120, 91);
+
             } else {
-                JOptionPane.showMessageDialog(null, "The Rocketship can only contain upto the SCIENTIST and 2 other ITEMS");
+                if (spaceship.size() <= 2) {
+                    if (onEarth) {
+                        earth.remove(cow);
+                        spaceship.add(cow);
+                    } else {
+                        mars.remove(cow);
+                        spaceship.add(cow);
+                    }
+                    cowPng.setBounds(290, 230, 120, 91);
+                } else {
+                    JOptionPane.showMessageDialog(null, "The Rocketship can only contain upto the SCIENTIST and 2 other ITEMS");
+                }
             }
         }
     }//GEN-LAST:event_cowPngMouseClicked
 
     private void lionPngMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lionPngMouseClicked
-        // TODO add your handling code here:
-        if (onShip(lion)) {
-            if (onEarth) {
-                earth.add(lion);
-                spaceship.remove(lion);
-                lionPng.setBounds(110, 80, 120, 103);
-            } 
-            else {
-                mars.add(lion);
-                spaceship.remove(lion);
-                lionPng.setBounds(510, 70, 120, 103);
-            }
+        if (toShip(lion)) {
+            if (onShip(lion)) {
+                if (onEarth) {
+                    earth.add(lion);
+                    spaceship.remove(lion);
+                    lionPng.setBounds(110, 80, 120, 103);
+                } else {
+                    mars.add(lion);
+                    spaceship.remove(lion);
+                    lionPng.setBounds(510, 70, 120, 103);
+                }
 
-        } 
-        else {
-            if(spaceship.size()<=2){
-            if (onEarth) {
-                earth.remove(lion);
-                spaceship.add(lion);
-            } 
-            else {
-                mars.remove(lion);
-                spaceship.add(lion);
+            } else {
+                if (spaceship.size() <= 2) {
+                    if (onEarth) {
+                        earth.remove(lion);
+                        spaceship.add(lion);
+                    } else {
+                        mars.remove(lion);
+                        spaceship.add(lion);
+                    }
+                    lionPng.setBounds(350, 200, 120, 103);
+                } else {
+                    JOptionPane.showMessageDialog(null, "The Rocketship can only contain upto the SCIENTIST and 2 other ITEMS");
+                }
             }
-            lionPng.setBounds(350, 200, 120, 103);
-            }
-            else
-                JOptionPane.showMessageDialog(null, "The Rocketship can only contain upto the SCIENTIST and 2 other ITEMS"); 
-       }
+        }
     }//GEN-LAST:event_lionPngMouseClicked
 
     private void human1PngMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_human1PngMouseClicked
-        // TODO add your handling code here:
-        if (onShip(human1)) {
-            if (onEarth) {
-                earth.add(human1);
-                spaceship.remove(human1);
-                human1Png.setBounds(20, 150, 90, 136);
-            } 
-            else {
-                mars.add(human1);
-                spaceship.remove(human1);
-                human1Png.setBounds(620, 120, 90, 136);
-            }
-
-        } 
-        else {
-            if (spaceship.size() <= 2) {
+        if (toShip(human1)) {
+            if (onShip(human1)) {
                 if (onEarth) {
-                    earth.remove(human1);
-                    spaceship.add(human1);
+                    earth.add(human1);
+                    spaceship.remove(human1);
+                    human1Png.setBounds(20, 150, 90, 136);
                 } else {
-                    mars.remove(human1);
-                    spaceship.add(human1);
+                    mars.add(human1);
+                    spaceship.remove(human1);
+                    human1Png.setBounds(620, 120, 90, 136);
                 }
-                human1Png.setBounds(350, 130, 90, 136);
+
             } else {
-                JOptionPane.showMessageDialog(null, "The Rocketship can only contain upto the SCIENTIST and 2 other ITEMS");
+                if (spaceship.size() <= 2) {
+                    if (onEarth) {
+                        earth.remove(human1);
+                        spaceship.add(human1);
+                    } else {
+                        mars.remove(human1);
+                        spaceship.add(human1);
+                    }
+                    human1Png.setBounds(350, 130, 90, 136);
+                } else {
+                    JOptionPane.showMessageDialog(null, "The Rocketship can only contain upto the SCIENTIST and 2 other ITEMS");
+                }
             }
         }
     }//GEN-LAST:event_human1PngMouseClicked
 
     private void human2PngMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_human2PngMouseClicked
-        // TODO add your handling code here:
-        if (onShip(human2)) {
-            if (onEarth) {
-                earth.add(human2);
-                spaceship.remove(human2);
-                human2Png.setBounds(10, 60, 90, 136);
-            } 
-            else {
-                mars.add(human2);
-                spaceship.remove(human2);
-                human2Png.setBounds(610, 30, 90, 136);
-            }
-
-        } 
-        else {
-            if (spaceship.size() <= 2) {
+        if (toShip(human2)) {
+            if (onShip(human2)) {
                 if (onEarth) {
-                    earth.remove(human2);
-                    spaceship.add(human2);
+                    earth.add(human2);
+                    spaceship.remove(human2);
+                    human2Png.setBounds(10, 60, 90, 136);
                 } else {
-                    mars.remove(human2);
-                    spaceship.add(human2);
+                    mars.add(human2);
+                    spaceship.remove(human2);
+                    human2Png.setBounds(610, 30, 90, 136);
                 }
-                human2Png.setBounds(270, 140, 90, 136);
+
             } else {
-                JOptionPane.showMessageDialog(null, "The Rocketship can only contain upto the SCIENTIST and 2 other ITEMS");
+                if (spaceship.size() <= 2) {
+                    if (onEarth) {
+                        earth.remove(human2);
+                        spaceship.add(human2);
+                    } else {
+                        mars.remove(human2);
+                        spaceship.add(human2);
+                    }
+                    human2Png.setBounds(270, 140, 90, 136);
+                } else {
+                    JOptionPane.showMessageDialog(null, "The Rocketship can only contain upto the SCIENTIST and 2 other ITEMS");
+                }
             }
         }
     }//GEN-LAST:event_human2PngMouseClicked
 
     private void restartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restartBtnActionPerformed
-        // TODO add your handling code here:
         restartGame();
     }//GEN-LAST:event_restartBtnActionPerformed
 
     private void sendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendBtnActionPerformed
-        // TODO add your handling code here:
         if (spaceship.contains(scientist)) {
             if (onEarth) {
                 for (int i = 0; i < spaceship.size(); i++) {
