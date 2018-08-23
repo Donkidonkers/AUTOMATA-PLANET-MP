@@ -45,26 +45,14 @@ public class MainFrame extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         introPanel2 = new View.IntroPanel();
         gamePanel1 = new View.GamePanel();
-        solutionPanel2 = new View.SolutionPanel();
+        solutionPanel1 = new View.SolutionPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Earth to Mars Puzzle Game");
 
         jTabbedPane1.addTab("Introduction", introPanel2);
         jTabbedPane1.addTab("Puzzle Game", gamePanel1);
-
-        javax.swing.GroupLayout solutionPanel2Layout = new javax.swing.GroupLayout(solutionPanel2);
-        solutionPanel2.setLayout(solutionPanel2Layout);
-        solutionPanel2Layout.setHorizontalGroup(
-            solutionPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 715, Short.MAX_VALUE)
-        );
-        solutionPanel2Layout.setVerticalGroup(
-            solutionPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 585, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Solution", solutionPanel2);
+        jTabbedPane1.addTab("Solution", solutionPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,6 +73,6 @@ public class MainFrame extends javax.swing.JFrame {
     private View.GamePanel gamePanel1;
     private View.IntroPanel introPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private View.SolutionPanel solutionPanel2;
+    private View.SolutionPanel solutionPanel1;
     // End of variables declaration//GEN-END:variables
 }
