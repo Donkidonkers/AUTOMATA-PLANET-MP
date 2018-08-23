@@ -86,6 +86,7 @@ public class GamePanel extends javax.swing.JPanel {
         human2Png.setBounds(10, 60, 90, 136);
         rocketPng.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/rocket.png")));
         numberMovesLbl.setText(Integer.toString(movesInt));
+        currentStateLbl.setText("q" + Integer.toString(checkState()));
     }
     
     public boolean onShip(Thing name){
@@ -113,6 +114,43 @@ public class GamePanel extends javax.swing.JPanel {
         }
         return true;
     }
+
+    public int checkState() {
+        //earth.contains()
+        if (earth.contains(scientist) && earth.contains(grain) && earth.contains(cow) &&
+            earth.contains(lion) && earth.contains(human1) && earth.contains(human2))
+            return 0;
+        if (mars.contains(scientist) && earth.contains(grain) && mars.contains(cow) &&
+            mars.contains(lion) && earth.contains(human1) && earth.contains(human2))
+            return 1;
+        if (earth.contains(scientist) && earth.contains(grain) && mars.contains(cow) &&
+            earth.contains(lion) && earth.contains(human1) && earth.contains(human2))
+            return 2;
+        if (mars.contains(scientist) && earth.contains(grain) && mars.contains(cow) &&
+            earth.contains(lion) && mars.contains(human1) && mars.contains(human2))
+            return 3;
+        if (earth.contains(scientist) && earth.contains(grain) && earth.contains(cow) &&
+            earth.contains(lion) && mars.contains(human1) && mars.contains(human2))
+            return 4;
+        if (mars.contains(scientist) && mars.contains(grain) && earth.contains(cow) &&
+            mars.contains(lion) && mars.contains(human1) && mars.contains(human2))
+            return 5;
+        if (earth.contains(scientist) && mars.contains(grain) && earth.contains(cow) &&
+            earth.contains(lion) && mars.contains(human1) && mars.contains(human2))
+            return 6;
+        if (mars.contains(scientist) && mars.contains(grain) && mars.contains(cow) &&
+            mars.contains(lion) && mars.contains(human1) && mars.contains(human2))
+            return 7;
+        if (earth.contains(scientist) && earth.contains(grain) && earth.contains(cow) &&
+            mars.contains(lion) && earth.contains(human1) && earth.contains(human2))
+            return 8;
+        if (mars.contains(scientist) && mars.contains(grain) && mars.contains(cow) &&
+            mars.contains(lion) && earth.contains(human1) && earth.contains(human2))
+            return 9;
+        else
+            return 00;
+    }
+
     /*
     SCIENTIST EARTH BOUNDS: scientistPng.setBounds(30, 260, 75, 120);
     GRAIN EARTH BOUNDS: grainPng.setBounds(140, 290, 70, 80);
@@ -282,9 +320,9 @@ public class GamePanel extends javax.swing.JPanel {
 
         currentStateLbl.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
         currentStateLbl.setForeground(new java.awt.Color(255, 255, 255));
-        currentStateLbl.setText("q");
+        currentStateLbl.setText("q0");
         nullPanel2.add(currentStateLbl);
-        currentStateLbl.setBounds(620, 90, 50, 50);
+        currentStateLbl.setBounds(620, 90, 80, 50);
 
         jLabel4.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -581,6 +619,7 @@ public class GamePanel extends javax.swing.JPanel {
             }
             movesInt++;
             numberMovesLbl.setText(Integer.toString(movesInt));
+            currentStateLbl.setText("q" + Integer.toString(checkState()));
             if (checkForLoss()) {
                 System.out.println("You failed to save humanity.");
                 JOptionPane.showMessageDialog(null, "You failed to save humanity! Moves done: "+ movesInt);
@@ -598,7 +637,7 @@ public class GamePanel extends javax.swing.JPanel {
         }    
     }//GEN-LAST:event_sendBtnActionPerformed
 
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundImg;
     private javax.swing.JLabel backgroundNFA;
