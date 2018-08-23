@@ -59,22 +59,13 @@ public class GamePanel extends javax.swing.JPanel {
     }
 
     public boolean checkForWin() {
-        if (earth.size() == 0) {
-            return true;
-        }
-        return false;
+        return earth.isEmpty();
     }
 
     public void restartGame() {
-        for (int i = 0; i < spaceship.size(); i++){
-            spaceship.remove(i);
-        }
-        for (int i = 0; i < mars.size(); i++){
-            mars.remove(i);
-        }
-        for (int i = 0; i < earth.size(); i++){
-            earth.remove(i);
-        }
+            spaceship.clear();
+            mars.clear();
+            earth.clear();
         initializeGame();
         onEarth=true;
         movesInt = 0;
