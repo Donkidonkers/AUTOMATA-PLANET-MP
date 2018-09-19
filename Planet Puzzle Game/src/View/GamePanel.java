@@ -138,8 +138,20 @@ public class GamePanel extends javax.swing.JPanel {
         if (mars.contains(scientist) && mars.contains(grain) && mars.contains(cow) &&
             mars.contains(lion) && earth.contains(human1) && earth.contains(human2))
             return 9;
+        if (mars.contains(scientist) && mars.contains(grain) && mars.contains(cow) &&
+            earth.contains(lion) && mars.contains(human1) && mars.contains(human2))
+            return 10;
+        if (earth.contains(scientist) && mars.contains(grain) && earth.contains(cow) &&
+            mars.contains(lion) && earth.contains(human1) && earth.contains(human2))
+            return 11;
+        if (mars.contains(scientist) && earth.contains(grain) && mars.contains(cow) &&
+            mars.contains(lion) && mars.contains(human1) && mars.contains(human2))
+            return 12;
+        if (earth.contains(scientist) && mars.contains(grain) && earth.contains(cow) &&
+            earth.contains(lion) && earth.contains(human1) && earth.contains(human2))
+            return 13;
         else
-            return 00;
+            return 20;
     }
 
     /*
@@ -296,6 +308,7 @@ public class GamePanel extends javax.swing.JPanel {
 
         diagramPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 153)));
 
+        nullPanel2.setBackground(new java.awt.Color(87, 87, 87));
         nullPanel2.setLayout(null);
 
         restartBtn.setBackground(new java.awt.Color(255, 255, 255));
@@ -307,13 +320,13 @@ public class GamePanel extends javax.swing.JPanel {
             }
         });
         nullPanel2.add(restartBtn);
-        restartBtn.setBounds(310, 110, 90, 30);
+        restartBtn.setBounds(590, 270, 90, 30);
 
         currentStateLbl.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
         currentStateLbl.setForeground(new java.awt.Color(255, 255, 255));
         currentStateLbl.setText("q0");
         nullPanel2.add(currentStateLbl);
-        currentStateLbl.setBounds(620, 90, 80, 50);
+        currentStateLbl.setBounds(610, 90, 80, 50);
 
         jLabel4.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -331,18 +344,18 @@ public class GamePanel extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("STATE");
         nullPanel2.add(jLabel2);
-        jLabel2.setBounds(620, 60, 52, 21);
+        jLabel2.setBounds(610, 60, 52, 20);
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("YOU ARE IN");
         nullPanel2.add(jLabel1);
-        jLabel1.setBounds(600, 30, 110, 21);
+        jLabel1.setBounds(590, 30, 110, 20);
 
-        backgroundNFA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/BackgroundNFA.png"))); // NOI18N
+        backgroundNFA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pictures/backgroundNFA2.png"))); // NOI18N
         backgroundNFA.setToolTipText("");
         nullPanel2.add(backgroundNFA);
-        backgroundNFA.setBounds(0, 0, 713, 170);
+        backgroundNFA.setBounds(0, 0, 560, 315);
 
         javax.swing.GroupLayout diagramPanelLayout = new javax.swing.GroupLayout(diagramPanel);
         diagramPanel.setLayout(diagramPanelLayout);
@@ -352,7 +365,9 @@ public class GamePanel extends javax.swing.JPanel {
         );
         diagramPanelLayout.setVerticalGroup(
             diagramPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(nullPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(diagramPanelLayout.createSequentialGroup()
+                .addComponent(nullPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -411,7 +426,7 @@ public class GamePanel extends javax.swing.JPanel {
                 } else {
                     mars.add(grain);
                     spaceship.remove(grain);
-                    grainPng.setBounds(140, 290, 70, 80);
+                    grainPng.setBounds(550, 270, 70, 80);
                 }
 
             } else {
